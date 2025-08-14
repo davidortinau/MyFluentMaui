@@ -1,0 +1,63 @@
+@page "/contact"
+@page "/"
+
+<div class="blazor-contact-shell">
+    <div class="blazor-contact-title">Contact Details</div>
+    <div class="blazor-contact-card">
+        <EditForm Model="contact" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <div class="blazor-contact-grid">
+                <div>
+                    <FluentTextField Label="Full name" @bind-Value="contact.FullName" Required />
+                    <ValidationMessage For="() => contact.FullName" />
+                </div>
+                <div>
+                    <FluentTextField Label="Email" Type="InputType.Email" @bind-Value="contact.Email" />
+                </div>
+                <div>
+                    <FluentTextField Label="Phone" @bind-Value="contact.Phone" />
+                </div>
+                <div>
+                    <FluentTextField Label="Company" @bind-Value="contact.Company" />
+                </div>
+                <div>
+                    <FluentDatePicker Label="Birthday" @bind-Value="contact.Birthday" />
+                </div>
+                <div>
+                    <FluentSelect TOption="string" TValue="string" Label="Category" @bind-Value="contact.Category"
+                        Placeholder="Select...">
+                        <FluentOption TOption="string" Value="Friend">Friend</FluentOption>
+                        <FluentOption TOption="string" Value="Family">Family</FluentOption>
+                        <FluentOption TOption="string" Value="Work">Work</FluentOption>
+                        <FluentOption TOption="string" Value="Other">Other</FluentOption>
+                    </FluentSelect>
+                </div>
+                <div style="grid-column:1 / span 2;">
+                    <FluentTextArea Label="Notes" @bind-Value="contact.Notes" Rows="4" />
+                </div>
+                <div style="grid-column:1 / span 2;" class="save-button-row">
+                    <FluentButton Type="ButtonType.Submit" Style="width:100%;">Save
+                        Contact</FluentButton>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+    @if (saved)
+    {
+        <FluentMessageBar Intent="MessageIntent.Success" Style="margin-top:12px;">Contact '@lastSavedName' saved.
+        </FluentMessageBar>
+    }
+</div>
+
+@code {
+    private Contact contact = new();
+    private bool saved;
+    private string? lastSavedName;
+
+    private void HandleValidSubmit()
+    {
+        saved = true;
+        lastSavedName = contact.FullName;
+        contact = new();
+    }
+}

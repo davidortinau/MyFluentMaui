@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFluentMaui.MainPage"
+             Title="New Contact">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Share"
+                     Order="Secondary"/>
+        <ToolbarItem Text="Copy"
+                     Order="Secondary"/>
+        <ToolbarItem Text="Hide"
+                     Order="Secondary"/>
+        <ToolbarItem Text="Ignore this contact forever"
+                     Order="Secondary"/>
+
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,20"
+                             Spacing="18">
+            <Label
+                Text="Contact Details"
+                SemanticProperties.HeadingLevel="Level1"/>
+
+            <Entry
+                x:Name="FullNameEntry"
+                Placeholder="Full name"
+                ClearButtonVisibility="WhileEditing"
+                SemanticProperties.Description="Enter the contact full name"/>
+
+            <Entry
+                x:Name="EmailEntry"
+                Placeholder="Email"
+                Keyboard="Email"
+                SemanticProperties.Description="Enter the contact email address"/>
+
+            <Entry
+                x:Name="PhoneEntry"
+                Placeholder="Phone"
+                Keyboard="Telephone"
+                SemanticProperties.Description="Enter the contact phone number"/>
+
+            <Entry
+                x:Name="CompanyEntry"
+                Placeholder="Company"
+                SemanticProperties.Description="Enter the company name"/>
+
+            <HorizontalStackLayout Spacing="12">
+                <VerticalStackLayout WidthRequest="160">
+                    <Label Text="Birthday"
+                           HorizontalOptions="Start"/>
+                    <DatePicker x:Name="BirthdayPicker"
+                                HorizontalOptions="Start"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Category"
+                           HorizontalOptions="Start"/>
+                    <Picker x:Name="CategoryPicker"
+                            HorizontalOptions="Start">
+                        <Picker.Items>
+                            <x:String>Friend</x:String>
+                            <x:String>Family</x:String>
+                            <x:String>Work</x:String>
+                            <x:String>Other</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+
+            <Editor
+                x:Name="NotesEditor"
+                HeightRequest="200"
+                Placeholder="Notes"
+                AutoSize="TextChanges"
+                SemanticProperties.Description="Enter any additional notes about the contact"/>
+
+            <Button
+                Text="Save Contact"
+                x:Name="SaveBtn"
+                SemanticProperties.Hint="Saves the contact details"
+                Clicked="OnSaveClicked"
+                HorizontalOptions="Fill"/>
+            <Button Text="Delete"
+                    x:Name="DeleteBtn"
+                    SemanticProperties.Hint="Saves the contact details"
+                    Clicked="DeleteBtn_ClickedAsync"
+                    HorizontalOptions="Fill"/>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

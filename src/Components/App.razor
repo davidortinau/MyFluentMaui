@@ -1,0 +1,19 @@
+@using Microsoft.AspNetCore.Components.Routing
+
+<FluentDesignTheme>
+    <FluentToastProvider />
+    <FluentDialogProvider />
+    <FluentTooltipProvider />
+    <FluentMessageBarProvider />
+    <FluentMenuProvider />
+    <Router AppAssembly="@typeof(App).Assembly">
+        <Found Context="routeData">
+            <RouteView RouteData="routeData" />
+        </Found>
+        <NotFound>
+            <div>
+                <h3>Page not found</h3>
+            </div>
+        </NotFound>
+    </Router>
+</FluentDesignTheme>
