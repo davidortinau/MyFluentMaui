@@ -2,6 +2,10 @@
 
 A cross-platform .NET MAUI application that integrates Blazor components with Microsoft Fluent UI, combining native mobile capabilities with modern web-based UI components.
 
+![native controls](images/native.png)
+
+![blazor controls](images/blazor.png)
+
 ## Overview
 
 This project demonstrates a hybrid architecture using MAUI as the native shell with Blazor WebView for UI components, bridging the gap between native mobile development and web-based user interfaces while maintaining Microsoft's Fluent Design System.
@@ -91,10 +95,12 @@ dotnet run --project src/MyFluentMaui.csproj --framework net10.0-maccatalyst
 ## Architecture Notes
 
 The application uses a hybrid navigation model combining:
+
 - **MAUI Shell**: For native navigation and platform integration
 - **Blazor Router**: For web-based component navigation within Blazor views
 
 Fluent UI integration includes providers for:
+
 - Toast notifications
 - Dialogs
 - Tooltips
